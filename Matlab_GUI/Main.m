@@ -1,7 +1,7 @@
 function varargout = Main(varargin)
 % MAIN MATLAB code for Main.fig
 %      MAIN, by itself, creates a new MAIN or raises the existing
-%      singleton*.
+%      singl    eton*.
 %
 %      H = MAIN returns the handle to a new MAIN or the handle to
 %      the existing singleton*.
@@ -143,6 +143,10 @@ switch popup_sel_index
         s.InputBufferSize = 2048;
         fopen(s);
 end
+fgetl(s)
+fgetl(s)
+fgetl(s)
+clc
 data1 = fgetl(s)
 splittedPoints1 = strsplit(data1,',')
 numbers1 = str2double(splittedPoints1)
@@ -167,7 +171,9 @@ if strfind(StrEnd,'END')
     set(handles.slider2,'Value',FrecuenciaInferior)
     set(handles.slider1,'Value',FrecuenciaSuperior)
     Mensaje = strcat('F: ' ,num2str(FrecuenciaSuperior),'-',num2str(FrecuenciaInferior),' (MHz)')
+    Mensaje2 =strcat('Fc: ' ,num2str(FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2)),' (MHz)')
     set(handles.text3,'String',Mensaje);
+    set(handles.text7,'String',Mensaje2);
 
 end
 %fclose(s);

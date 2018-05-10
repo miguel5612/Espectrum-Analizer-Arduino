@@ -40,6 +40,13 @@ float sigDet_Frequency = 432.0;
 float sigDet_Frequency_1 = 432.0;
 
 
+float Start = 430;
+float End = 460;
+float Step = 0.1;
+
+float freq;
+
+
 byte cus  = 4; // 預設畫面尺規位置 
 byte pos  = 40; // 預設 freq target位置
 byte j=0;
@@ -85,8 +92,10 @@ void setup(void) {
   pinMode(A3,INPUT_PULLUP);//17 A3 down
   digitalWrite(9,LOW);  
   // digitalWrite(14,LOW);
-  if (!rf22.init())
+  if (!rf22.init()){
     Serial.println("RF22 init failed");
+    u8g.print("IF");
+  }
   rf22.setFrequency(432.0);  // rf22.setModemConfig(RF22::FSK_PN9_Rb2Fd5);
   rf22.setModeRx();  
   delayMicroseconds(200); // Wait for freq to settle    
@@ -100,27 +109,28 @@ void setup(void) {
        u8g.firstPage(); do {      
        u8g.setFont(u8g_font_6x10);
        u8g.setPrintPos( 0, 7); 
-       u8g.print("Easy Spectrum ");
+       u8g.print("Analyzer Spectrum ");
        u8g.setPrintPos( 0, 17); 
        u8g.print("240~930 MHz");
        u8g.setPrintPos( 0, 25); 
        u8g.print("ver 2018-02-24");
        u8g.setPrintPos( 0, 35); 
-       u8g.print(" WU YUN CHANG");
+       u8g.print("Medios Tx");
        u8g.setPrintPos( 0, 45); 
-       u8g.print("Battery:");
-       u8g.print(analogRead(A6) * (1.1 / 1024) * 5.51745);
-       u8g.print("V"); } 
+       u8g.print("2018-");
+       u8g.print("UFPS");
+       u8g.print(""); } 
       while( u8g.nextPage() );
 ////取得本地設備電池電壓值
 // volt = (analogRead(A0) * (1.1 / 1024) * 5.51745) ; // 220K + 48.7k 分壓 , (220 + 48.7)/48.7=5.51745
 
- delay(5000);
+ delay(1000);
  fn = EEPROM.read(0); 
  // EEPROM.get( eeAddress, fScn );
 }
 
 void loop(void) {
+  TransmitData();
   //  if(digitalRead(A0) == 0 && digitalRead(A0) !=  SwMu ){ //　按住連續跑
   if( digitalRead(A0) !=  SwMu ){      //按住　連續跑
     fn++;  if(fn >= 4)fn=0;   SwMu != SwMu; //true 或 false(A0)
@@ -708,6 +718,41 @@ void select_1(){
 
 
 
+
+
+void TransmitData()
+{
+  
+  Serial.print("000");
+  Serial.print(",");
+  Serial.print((int)Start,DEC);
+  Serial.print(",");
+  Serial.print((int)End,DEC);
+  Serial.print(",");
+  Serial.print((double)Step,1);
+  Serial.print(",");
+  for (freq = Start; freq < End; freq += Step)
+  {
+    rf22.setFrequency(freq);
+    delayMicroseconds(4000); // Let the freq settle
+    rssi = rf22.rssiRead();
+    //if(rssi>254){setup();}
+    Serial.print(rssi, DEC);
+    Serial.print(",");
+    //Serial.println(dtostrf(freq,0,3,temp));
+  } 
+  Serial.println("END");
+  u8g.firstPage(); 
+  u8g.setFont(u8g_font_unifont);
+  u8g.setColorIndex(1);
+  u8g.setPrintPos( 0, 30);
+  u8g.print("TEST MENSAJE");
+  u8g.print(Start);
+  u8g.print("-");
+  u8g.print(End);
+  u8g.print(" MHz");
+    
+}
 
 
 
