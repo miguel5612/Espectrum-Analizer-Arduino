@@ -723,34 +723,6 @@ void select_1(){
 void TransmitData()
 {
   
-  Serial.print("000");
-  Serial.print(",");
-  Serial.print((int)Start,DEC);
-  Serial.print(",");
-  Serial.print((int)End,DEC);
-  Serial.print(",");
-  Serial.print((double)Step,1);
-  Serial.print(",");
-  for (freq = Start; freq < End; freq += Step)
-  {
-    rf22.setFrequency(freq);
-    delayMicroseconds(4000); // Let the freq settle
-    rssi = rf22.rssiRead();
-    //if(rssi>254){setup();}
-    Serial.print(rssi, DEC);
-    Serial.print(",");
-    //Serial.println(dtostrf(freq,0,3,temp));
-  } 
-  Serial.println("END");
-  u8g.firstPage(); 
-  u8g.setFont(u8g_font_unifont);
-  u8g.setColorIndex(1);
-  u8g.setPrintPos( 0, 30);
-  u8g.print("TEST MENSAJE");
-  u8g.print(Start);
-  u8g.print("-");
-  u8g.print(End);
-  u8g.print(" MHz");
     
 }
 

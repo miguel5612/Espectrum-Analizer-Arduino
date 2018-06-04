@@ -92,8 +92,8 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 axes(handles.axes1);
 cla;
 delete(instrfindall);
-popup_sel_index = get(handles.popupmenu1, 'Value');
-switch popup_sel_index
+    popup_sel_index = get(handles.popupmenu1, 'Value');
+    switch popup_sel_index
     case 1
         s = serial('COM1','BAUD',115200);
         s.InputBufferSize = 2048;
@@ -142,41 +142,73 @@ switch popup_sel_index
         s = serial('COM12','BAUD',115200);
         s.InputBufferSize = 2048;
         fopen(s);
-end
-fgetl(s)
-fgetl(s)
-fgetl(s)
-clc
-data1 = fgetl(s)
-splittedPoints1 = strsplit(data1,',')
-numbers1 = str2double(splittedPoints1)
-[m,n] = size(splittedPoints1)
-mychar = splittedPoints1(n)
-StrEnd = mychar{1}
-if strfind(StrEnd,'END')
-    h=plot(1);
-    numbers3 = [numbers1(5:n)]
-    f = numbers1(2):numbers1(4):numbers1(3)
-    set(h,'XData',f,'YData',numbers3)
-    title('Signal Analysis')    
-    ylabel('Power received RSSi (dBm)')
-    xlabel('Frecuency (MHz)')
-    legend('RSSi')
+    case 13
+        s = serial('COM13','BAUD',115200);
+        s.InputBufferSize = 2048;
+        fopen(s);
+    case 14
+        s = serial('COM14','BAUD',115200);
+        s.InputBufferSize = 2048;
+        fopen(s);
+    case 15
+        s = serial('COM15','BAUD',115200);
+        s.InputBufferSize = 2048;
+        fopen(s);
+
+    end
+s.BytesAvailableFcn = {@showDataSerial};
+
+function showDataSerial(s, eventdata, handles)
+    disp('try')
+    fgetl(s)
+    fgetl(s)
+    clc
+    data1 = fgetl(s)
+    splittedPoints1 = strsplit(data1,',')
+    numbers1 = str2double(splittedPoints1)
+    [m,n] = size(splittedPoints1)
+    mychar = splittedPoints1(n)
+    StrEnd = mychar{1}
+    FrecuenciaInferior = 430;
+    FrecuenciaSuperior = 460;
     set(handles.slider1,'Enable','on')
     set(handles.slider2,'Enable','on')
-    set(handles.pushbutton1,'String','Update Graph')
-
-    FrecuenciaSuperior = numbers1(2)
-    FrecuenciaInferior = numbers1(3)
     set(handles.slider2,'Value',FrecuenciaInferior)
     set(handles.slider1,'Value',FrecuenciaSuperior)
-    Mensaje = strcat('F: ' ,num2str(FrecuenciaSuperior),'-',num2str(FrecuenciaInferior),' (MHz)')
-    Mensaje2 =strcat('Fc: ' ,num2str(FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2)),' (MHz)')
-    set(handles.text3,'String',Mensaje);
-    set(handles.text7,'String',Mensaje2);
-
+    if strfind(StrEnd,'END')
+        h=plot(1);
+        numbers3 = [numbers1(5:n)]
+        f = numbers1(2):numbers1(4):numbers1(3)
+        [o,p] = size(numbers3)
+        [q,r] = size(f)
+        if p==r
+            set(h,'XData',f,'YData',numbers3)
+        else
+            numbers3 = [numbers1(6:n)] 
+            set(h,'XData',f,'YData',numbers3)
+        end 
+        title('Signal Analysis')    
+        ylabel('Power received RSSi (dBm)')
+        xlabel('Frecuency (MHz)')
+        legend('RSSi')
+        set(handles.slider1,'Enable','on')
+        set(handles.slider2,'Enable','on')
+        set(handles.pushbutton1,'String','Update Graph')
+        FrecuenciaSuperior = numbers1(2)
+        FrecuenciaInferior = numbers1(3)
+        set(handles.slider2,'Value',FrecuenciaInferior)
+        set(handles.slider1,'Value',FrecuenciaSuperior)
+        Mensaje = strcat('F: ' ,num2str(FrecuenciaSuperior),'-',num2str(FrecuenciaInferior),' (MHz)')
+        Mensaje2 =strcat('Fc: ' ,num2str(FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2)),' (MHz)')
+        set(handles.text3,'String',Mensaje);
+        set(handles.text7,'String',Mensaje2);
+        %fclose(s);
+        %delete(s);
 end
+  
 %fclose(s);
+    
+
 
 % --------------------------------------------------------------------
 function FileMenu_Callback(hObject, eventdata, handles)
@@ -239,7 +271,7 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
      set(hObject,'BackgroundColor','white');
 end
 
-set(hObject, 'String', {'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10', 'COM11'});
+set(hObject, 'String', {'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10', 'COM11', 'COM12', 'COM13', 'COM14', 'COM15'});
 
 
 % --- Executes on button press in pushbutton3.
@@ -279,6 +311,7 @@ Mensaje = strcat('F: ' ,num2str(FrecuenciaSuperior),'-',num2str(FrecuenciaInferi
 set(handles.text3,'String',Mensaje);
 SerialMessage = strcat(num2str(FrecuenciaSuperior),',0.1,',num2str(FrecuenciaInferior))
 popup_sel_index = get(handles.popupmenu1, 'Value');
+delete(instrfindall);
 switch popup_sel_index
     case 1
         s = serial('COM1','BAUD',115200);
@@ -328,8 +361,24 @@ switch popup_sel_index
         s = serial('COM12','BAUD',115200);
         s.InputBufferSize = 2048;
         fopen(s);
+    case 13
+        s = serial('COM13','BAUD',115200);
+        s.InputBufferSize = 2048;
+        fopen(s);
+    case 14
+        s = serial('COM14','BAUD',115200);
+        s.InputBufferSize = 2048;
+        fopen(s);
+    case 15
+        s = serial('COM15','BAUD',115200);
+        s.InputBufferSize = 2048;
+        fopen(s);
+
 end
 fprintf(s,SerialMessage)
+fclose(s)
+delete(s)
+clear s
 pause(1);
 % hObject    handle to slider2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
