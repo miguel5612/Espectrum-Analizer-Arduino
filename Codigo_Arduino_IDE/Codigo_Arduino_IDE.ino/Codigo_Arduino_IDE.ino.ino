@@ -110,16 +110,16 @@ void publishSerial()
 }
 void readBtn(){
   //En caso de presionar un boton se realiza la accion (Subir Frecuencia o Bajar Frecuencia)
-  if(!digitalRead(fUp_btnUp) && FSuperior<460)
+  if((!digitalRead(fUp_btnUp)) && FSuperior<460)
   {
     FSuperior+=1; 
-  }else if(!digitalRead(fUp_btnDown) && FSuperior>420)
+  }else if((!digitalRead(fUp_btnDown)) && FSuperior>420)
   {
     FSuperior-=1; 
-  }else if(!digitalRead(fDown_btnUp) && FInferior<460)
+  }else if((!digitalRead(fDown_btnUp)) && FInferior<460)
   {
     FInferior+=1;
-  }else if(!digitalRead(fDown_btnDown) && FInferior>420)
+  }else if((!digitalRead(fDown_btnDown)) && FInferior>420)
   {
     FInferior-=1;
   }
