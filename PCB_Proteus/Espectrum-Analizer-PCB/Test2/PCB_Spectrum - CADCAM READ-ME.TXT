@@ -1,0 +1,39 @@
+LABCENTER PROTEUS TOOL INFORMATION FILE
+=======================================
+
+In case of difficulty, please e-mail support@labcenter.co.uk
+
+Tool set up for Proteus layout 'PCB_Spectrum.pdsprj'.
+CADCAM generated at 10:49:00 AM on Thursday, June 21, 2018.
+
+File List
+---------
+Bottom Copper           : PCB_Spectrum - CADCAM Bottom Copper.TXT
+Drill                   : PCB_Spectrum - CADCAM Drill.TXT
+
+Photoplotter Setup
+------------------
+Format: RS274X, ASCII, 2.4, imperial, absolute, eob=*, LZO
+Notes:  D=Diameter, S=Side, W=Width, H=Height, C=Chamfer
+
+D10	CIRCLE  D=60th                                                            DRAW
+D11	CIRCLE  D=10th                                                            DRAW
+D12	CIRCLE  D=2.5th                                                           DRAW
+D13	CIRCLE  D=90th                                                            FLASH
+D14	DIL     W=60th                H=100th               C=12th                FLASH
+D15	DIL     W=100th               H=60th                C=12th                FLASH
+D16	SQUARE  S=80th                                                            FLASH
+D17	CIRCLE  D=70th                                                            FLASH
+D18	CIRCLE  D=80th                                                            FLASH
+
+NC Drill Setup
+--------------
+Format: ASCII, 2.4, imperial, absolute, eob=<CR><LF>, no zero suppression.
+Notes:  Tool sizes are diameters. Layer sets are in brackets - 0=TOP, 15=BOTTOM, 1-14=INNER.
+
+T01	40th (0-15) Plated
+T02	39.3th (0-15) Plated
+T03	30th (0-15) Plated
+
+
+[END OF FILE]
