@@ -66,7 +66,7 @@ end
 %Default load program
 global s
 global pauseStatus
-g= imread('main.jpg');
+g= imread('../Recursos_Externos/Logo/main.jpg');
 axes(handles.axes2)
 imshow(g);
 pauseStatus = 0;
