@@ -2,7 +2,7 @@
 function varargout = Main(varargin)
 % MAIN MATLAB code for Main.fig
 %      MAIN, by itself, creates a new MAIN or raises the existing
-%      singl    eton*.
+%      singleton*.
 %
 %      H = MAIN returns the handle to a new MAIN or the handle to
 %      the existing singleton*.
@@ -72,6 +72,12 @@ imshow(g);
 pauseStatus = 0;
 set(handles.slider1,'Enable','off')
 set(handles.slider2,'Enable','off')
+f = 420:0.1:460
+y = zeros(401,1)
+plot(f,y,'r','parent',handles.axes1);
+set(handles.axes1,'color','g')
+grid(handles.axes1,'minor')
+
 %set(findobj(gcf, 'type','axes1'), 'Visible','off');
 % Miguel.califa --> Se automatiza el inicio de los puertos com
 %Aqui se declara la funcion que se va a ejecutar cada segundo
@@ -169,9 +175,9 @@ delete(instrfindall);
         try
             fopen(s);
         catch
+            delete(instrfindall);
             msgbox('No se puede iniciar el puerto serie');
             fclose(s);
-            delete(instrfindall);
             fopen(s);
         end
     case 8
@@ -265,25 +271,26 @@ delete(instrfindall);
 
     end
 set(findobj(gcf, 'type','axes1'), 'Visible','true')
-s.BytesAvailableFcn = {@showDataSerial,hObject};
+s.BytesAvailableFcn = {@showDataSerial,hObject}
 
-function showDataSerial(s, eventdata, hFigure)
-handles = guidata(hFigure);
+function showDataSerial(s, eventdata, handles)
+handles = guidata(handles);
+h = handles.axes1;
 if(get(handles.edit2,'String') == '0')
-    fgetl(s);
-    data1 = fgetl(s);
-    splittedPoints1 = strsplit(data1,',');
-    numbers1 = str2double(splittedPoints1);
-    [m,n] = size(splittedPoints1);
-    mychar = splittedPoints1(n);
+    fgetl(s)
+    data1 = fgetl(s)
+    splittedPoints1 = strsplit(data1,',')
+    numbers1 = str2double(splittedPoints1)
+    [m,n] = size(splittedPoints1)
+    mychar = splittedPoints1(n)
     StrEnd = mychar{1}
-    FrecuenciaInferior = numbers1(2);
-    FrecuenciaSuperior = numbers1(4);
+    FrecuenciaInferior = numbers1(2)
+    FrecuenciaSuperior = numbers1(3)
+    Paso = numbers1(4)
     if strfind(StrEnd,'END')
-        h=handles.axes1;
         numbers3 = [numbers1(5:n)];
-        f = numbers1(2):numbers1(4):numbers1(3);
-        [o,p] = size(numbers3);
+        f = FrecuenciaInferior:Paso:FrecuenciaSuperior
+        [o,p] = size(numbers3)
         [q,r] = size(f);
         limit = get(handles.slider3,'Value');
         mensaje = strcat('UMBRAL DE MEDICION (',num2str(limit),')');
@@ -295,26 +302,29 @@ if(get(handles.edit2,'String') == '0')
                     numbers3(i) = 0; %En caso de no cumplir se atenua (Se asume es ruido)
                 end                
             end
-            stem(f,numbers3,'r','parent',h);
+            FigPrinted = stem(f,numbers3,'r','parent',h);
         else
-            numbers3 = [numbers1(6:n)];
-            for i=1:p
+            numbers3 = [numbers1(6:p)];
+            [a,b] = size(numbers3)
+            [c,d] = size(f)
+            diff = b - d 
+            numbers3 = [numbers1(1:b-diff)];
+            [a,b] = size(numbers3)
+            for i=1:b-1
                 if numbers3(i)<=limit
                     numbers3(i) = 0; %En caso de no cumplir se atenua (Se asume es ruido)
                 end                
-            end
-            stem(h,numbers3,'r','parent',h);
+            end    
+            [a,b] = size(numbers3)
+            [c,d] = size(f)
+            FigPrinted = stem(f,numbers3,'r','parent',h);
         end
+        Fc = (FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2));
         title('Signal Analysis','parent',h);
         ylabel('Power received RSSi (dBm)','parent',h);
         xlabel('Frecuency (MHz)','parent',h);
         grid(h,'minor');
         set(h,'color','g')
-        ax = h
-        ax.GridLineStyle = '-'
-        ax.LineWidth = 1
-        ax.GridColor = 'white'
-        ax.GridAlpha = 0 %(or 1 i have forgotten how alpha works).
         pause(0.1);
         
         try
@@ -331,10 +341,12 @@ if(get(handles.edit2,'String') == '0')
         set(handles.slider2,'Value',FrecuenciaInferior);
         set(handles.slider1,'Value',FrecuenciaSuperior);
         Mensaje = strcat('F: ' ,num2str(FrecuenciaSuperior),'-',num2str(FrecuenciaInferior),' (MHz)');
-        Mensaje2 =strcat('Fc: ' ,num2str(FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2)),' (MHz)');
+        Mensaje2 =strcat('Fc: ' ,num2str(Fc),' (MHz)');
         set(handles.text3,'String',Mensaje);
         set(handles.text7,'String',Mensaje2);
     end
+ 
+    
 end
   
     

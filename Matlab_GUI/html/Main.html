@@ -1,0 +1,1800 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Main</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-06-23"><meta name="DC.source" content="Main.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> varargout = Main(varargin)
+<span class="comment">% MAIN MATLAB code for Main.fig</span>
+<span class="comment">%      MAIN, by itself, creates a new MAIN or raises the existing</span>
+<span class="comment">%      singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      H = MAIN returns the handle to a new MAIN or the handle to</span>
+<span class="comment">%      the existing singleton*.</span>
+<span class="comment">%</span>
+<span class="comment">%      MAIN('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="comment">%      function named CALLBACK in MAIN.M with the given input arguments.</span>
+<span class="comment">%</span>
+<span class="comment">%      MAIN('Property','Value',...) creates a new MAIN or raises the</span>
+<span class="comment">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="comment">%      applied to the GUI before Main_OpeningFcn gets called.  An</span>
+<span class="comment">%      unrecognized property name or invalid value makes property application</span>
+<span class="comment">%      stop.  All inputs are passed to Main_OpeningFcn via varargin.</span>
+<span class="comment">%</span>
+<span class="comment">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="comment">%      instance to run (singleton)".</span>
+<span class="comment">%</span>
+<span class="comment">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="comment">% Edit the above text to modify the response to help Main</span>
+
+<span class="comment">% Last Modified by GUIDE v2.5 17-Jun-2018 16:09:33</span>
+
+<span class="comment">% Begin initialization code - DO NOT EDIT</span>
+gui_Singleton = 1;
+gui_State = struct(<span class="string">'gui_Name'</span>,       mfilename, <span class="keyword">...</span>
+                   <span class="string">'gui_Singleton'</span>,  gui_Singleton, <span class="keyword">...</span>
+                   <span class="string">'gui_OpeningFcn'</span>, @Main_OpeningFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_OutputFcn'</span>,  @Main_OutputFcn, <span class="keyword">...</span>
+                   <span class="string">'gui_LayoutFcn'</span>,  [] , <span class="keyword">...</span>
+                   <span class="string">'gui_Callback'</span>,   []);
+<span class="keyword">if</span> nargin &amp;&amp; ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">else</span>
+    gui_mainfcn(gui_State, varargin{:});
+<span class="keyword">end</span>
+<span class="comment">% End initialization code - DO NOT EDIT</span>
+
+<span class="comment">% --- Executes just before Main is made visible.</span>
+<span class="keyword">function</span> Main_OpeningFcn(hObject, eventdata, handles, varargin)
+<span class="comment">% This function has no output args, see OutputFcn.</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="comment">% varargin   command line arguments to Main (see VARARGIN)</span>
+
+<span class="comment">% Choose default command line output for Main</span>
+handles.output = hObject;
+
+<span class="comment">% Update handles structure</span>
+guidata(hObject, handles);
+
+<span class="comment">% This sets up the initial plot - only do when we are invisible</span>
+<span class="comment">% so window can get raised using Main.</span>
+<span class="keyword">if</span> strcmp(get(hObject,<span class="string">'Visible'</span>),<span class="string">'off'</span>)
+    <span class="comment">%plot(1);</span>
+<span class="keyword">end</span>
+<span class="comment">%Default load program</span>
+<span class="keyword">global</span> s
+<span class="keyword">global</span> pauseStatus
+g= imread(<span class="string">'main.jpg'</span>);
+axes(handles.axes2)
+imshow(g);
+pauseStatus = 0;
+set(handles.slider1,<span class="string">'Enable'</span>,<span class="string">'off'</span>)
+set(handles.slider2,<span class="string">'Enable'</span>,<span class="string">'off'</span>)
+f = 420:0.1:460
+y = zeros(401,1)
+plot(f,y,<span class="string">'r'</span>,<span class="string">'parent'</span>,handles.axes1);
+set(handles.axes1,<span class="string">'color'</span>,<span class="string">'g'</span>)
+grid(handles.axes1,<span class="string">'minor'</span>)
+
+<span class="comment">%set(findobj(gcf, 'type','axes1'), 'Visible','off');</span>
+<span class="comment">% Miguel.califa --&gt; Se automatiza el inicio de los puertos com</span>
+<span class="comment">%Aqui se declara la funcion que se va a ejecutar cada segundo</span>
+<span class="comment">% UIWAIT makes Main wait for user response (see UIRESUME)</span>
+<span class="comment">% uiwait(handles.figure1);</span>
+
+
+<span class="comment">% --- Outputs from this function are returned to the command line.</span>
+<span class="keyword">function</span> varargout = Main_OutputFcn(hObject, eventdata, handles)
+<span class="comment">% varargout  cell array for returning output args (see VARARGOUT);</span>
+<span class="comment">% hObject    handle to figure</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Get default command line output from handles structure</span>
+varargout{1} = handles.output;
+<span class="comment">% --- Executes on button press in pushbutton1.</span>
+<span class="keyword">function</span> pushbutton1_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to pushbutton1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+clc;
+delete(instrfindall);
+    popup_sel_index = get(handles.popupmenu1, <span class="string">'Value'</span>);
+    <span class="keyword">switch</span> popup_sel_index
+    <span class="keyword">case</span> 1
+        s = serial(<span class="string">'COM1'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 2
+        s = serial(<span class="string">'COM2'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 3
+        s = serial(<span class="string">'COM3'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 4
+        s = serial(<span class="string">'COM4'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 5
+        s = serial(<span class="string">'COM5'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 6
+        s = serial(<span class="string">'COM6'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 7
+        s = serial(<span class="string">'COM7'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            delete(instrfindall);
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 8
+        s = serial(<span class="string">'COM8'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 9
+        s = serial(<span class="string">'COM9'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 10
+        s = serial(<span class="string">'COM10'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 11
+        s = serial(<span class="string">'COM11'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 12
+        s = serial(<span class="string">'COM12'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 13
+        s = serial(<span class="string">'COM13'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 14
+        s = serial(<span class="string">'COM14'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+    <span class="keyword">case</span> 15
+        s = serial(<span class="string">'COM15'</span>,<span class="string">'BAUD'</span>,115200);
+        s.InputBufferSize = 2048;
+        <span class="keyword">try</span>
+            fopen(s);
+        <span class="keyword">catch</span>
+            msgbox(<span class="string">'No se puede iniciar el puerto serie'</span>);
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        <span class="keyword">end</span>
+
+    <span class="keyword">end</span>
+set(findobj(gcf, <span class="string">'type'</span>,<span class="string">'axes1'</span>), <span class="string">'Visible'</span>,<span class="string">'true'</span>)
+s.BytesAvailableFcn = {@showDataSerial,hObject}
+
+<span class="keyword">function</span> showDataSerial(s, eventdata, hFigure)
+handles = guidata(hFigure);
+<span class="keyword">if</span>(get(handles.edit2,<span class="string">'String'</span>) == <span class="string">'0'</span>)
+    fgetl(s)
+    data1 = fgetl(s)
+    splittedPoints1 = strsplit(data1,<span class="string">','</span>)
+    numbers1 = str2double(splittedPoints1)
+    [m,n] = size(splittedPoints1)
+    mychar = splittedPoints1(n)
+    StrEnd = mychar{1}
+    FrecuenciaInferior = numbers1(2)
+    FrecuenciaSuperior = numbers1(3)
+    Paso = numbers1(4)
+    <span class="keyword">if</span> strfind(StrEnd,<span class="string">'END'</span>)
+        h=handles.axes1;
+        numbers3 = [numbers1(5:n)];
+        f = FrecuenciaInferior:Paso:FrecuenciaSuperior
+        [o,p] = size(numbers3)
+        [q,r] = size(f);
+        limit = get(handles.slider3,<span class="string">'Value'</span>);
+        mensaje = strcat(<span class="string">'UMBRAL DE MEDICION ('</span>,num2str(limit),<span class="string">')'</span>);
+        set(handles.text11,<span class="string">'String'</span>,mensaje);
+        <span class="keyword">if</span> p==r
+            <span class="keyword">for</span> i=1:p
+                numbers3(i);
+                <span class="keyword">if</span> numbers3(i)&lt;=limit
+                    numbers3(i) = 0; <span class="comment">%En caso de no cumplir se atenua (Se asume es ruido)</span>
+                <span class="keyword">end</span>
+            <span class="keyword">end</span>
+            stem(f,numbers3,<span class="string">'r'</span>,<span class="string">'parent'</span>,h);
+        <span class="keyword">else</span>
+            numbers3 = [numbers1(6:n)];
+            <span class="keyword">for</span> i=1:p-1
+                <span class="keyword">if</span> numbers3(i)&lt;=limit
+                    numbers3(i) = 0; <span class="comment">%En caso de no cumplir se atenua (Se asume es ruido)</span>
+                <span class="keyword">end</span>
+            <span class="keyword">end</span>
+            stem(h,numbers3,<span class="string">'r'</span>,<span class="string">'parent'</span>,h);
+        <span class="keyword">end</span>
+        Fc = (FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2));
+        title(<span class="string">'Signal Analysis'</span>,<span class="string">'parent'</span>,h);
+        ylabel(<span class="string">'Power received RSSi (dBm)'</span>,<span class="string">'parent'</span>,h);
+        xlabel(<span class="string">'Frecuency (MHz)'</span>,<span class="string">'parent'</span>,h);
+        grid(h,<span class="string">'minor'</span>);
+        set(h,<span class="string">'color'</span>,<span class="string">'g'</span>)
+        ax = h
+        ax.GridLineStyle = <span class="string">'-'</span>
+        ax.LineWidth = 1
+        ax.GridColor = <span class="string">'white'</span>
+        ax.GridAlpha = 0 <span class="comment">%(or 1 i have forgotten how alpha works).</span>
+        pause(0.1);
+
+        <span class="keyword">try</span>
+        set(handles.slider1,<span class="string">'Enable'</span>,<span class="string">'on'</span>);
+        set(handles.slider2,<span class="string">'Enable'</span>,<span class="string">'on'</span>);
+        set(handles.slider2,<span class="string">'Value'</span>,FrecuenciaInferior);
+        set(handles.slider1,<span class="string">'Value'</span>,FrecuenciaSuperior);
+        set(handles.slider1,<span class="string">'Enable'</span>,<span class="string">'on'</span>);
+        set(handles.slider2,<span class="string">'Enable'</span>,<span class="string">'on'</span>);
+        set(handles.pushbutton1,<span class="string">'String'</span>,<span class="string">'RECONECTAR'</span>);
+        <span class="keyword">end</span>
+        FrecuenciaSuperior = numbers1(2);
+        FrecuenciaInferior = numbers1(3);
+        set(handles.slider2,<span class="string">'Value'</span>,FrecuenciaInferior);
+        set(handles.slider1,<span class="string">'Value'</span>,FrecuenciaSuperior);
+        Mensaje = strcat(<span class="string">'F: '</span> ,num2str(FrecuenciaSuperior),<span class="string">'-'</span>,num2str(FrecuenciaInferior),<span class="string">' (MHz)'</span>);
+        Mensaje2 =strcat(<span class="string">'Fc: '</span> ,num2str(Fc),<span class="string">' (MHz)'</span>);
+        set(handles.text3,<span class="string">'String'</span>,Mensaje);
+        set(handles.text7,<span class="string">'String'</span>,Mensaje2);
+    <span class="keyword">end</span>
+    rango = FrecuenciaSuperior-FrecuenciaInferior
+    set(handles.axes2,<span class="string">'XTick'</span>,f)
+    h =findall(<span class="string">'type'</span>,<span class="string">'axes'</span>);
+    set(h(1), <span class="string">'XTick'</span>,ticks);
+<span class="keyword">end</span>
+
+
+
+
+<span class="comment">% --------------------------------------------------------------------</span>
+<span class="keyword">function</span> FileMenu_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to FileMenu (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+
+<span class="comment">% --------------------------------------------------------------------</span>
+<span class="keyword">function</span> OpenMenuItem_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to OpenMenuItem (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+file = uigetfile(<span class="string">'*.fig'</span>);
+<span class="keyword">if</span> ~isequal(file, 0)
+    open(file);
+<span class="keyword">end</span>
+
+<span class="comment">% --------------------------------------------------------------------</span>
+<span class="keyword">function</span> PrintMenuItem_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to PrintMenuItem (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+printdlg(handles.figure1)
+
+<span class="comment">% --------------------------------------------------------------------</span>
+<span class="keyword">function</span> CloseMenuItem_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to CloseMenuItem (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+selection = questdlg([<span class="string">'Close '</span> get(handles.figure1,<span class="string">'Name'</span>) <span class="string">'?'</span>],<span class="keyword">...</span>
+                     [<span class="string">'Close '</span> get(handles.figure1,<span class="string">'Name'</span>) <span class="string">'...'</span>],<span class="keyword">...</span>
+                     <span class="string">'Yes'</span>,<span class="string">'No'</span>,<span class="string">'Yes'</span>);
+<span class="keyword">if</span> strcmp(selection,<span class="string">'No'</span>)
+    <span class="keyword">return</span>;
+<span class="keyword">end</span>
+
+delete(handles.figure1)
+
+
+<span class="comment">% --- Executes on selection change in popupmenu1.</span>
+<span class="keyword">function</span> popupmenu1_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to popupmenu1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: contents = get(hObject,'String') returns popupmenu1 contents as cell array</span>
+<span class="comment">%        contents{get(hObject,'Value')} returns selected item from popupmenu1</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> popupmenu1_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to popupmenu1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: popupmenu controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+     set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+set(hObject, <span class="string">'String'</span>, {<span class="string">'COM1'</span>, <span class="string">'COM2'</span>, <span class="string">'COM3'</span>, <span class="string">'COM4'</span>, <span class="string">'COM5'</span>, <span class="string">'COM6'</span>, <span class="string">'COM7'</span>, <span class="string">'COM8'</span>, <span class="string">'COM9'</span>, <span class="string">'COM10'</span>, <span class="string">'COM11'</span>, <span class="string">'COM12'</span>, <span class="string">'COM13'</span>, <span class="string">'COM14'</span>, <span class="string">'COM15'</span>});
+
+
+<span class="comment">% --- Executes on button press in pushbutton3.</span>
+<span class="keyword">function</span> pushbutton3_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to pushbutton3 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider1_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider1_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider2_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider2 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider2_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider2 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+<span class="comment">%Esta es la funcion que se va a ejecutar cada segundo</span>
+
+
+<span class="comment">% --- If Enable == 'on', executes on mouse press in 5 pixel border.</span>
+<span class="comment">% --- Otherwise, executes on mouse press in 5 pixel border or over popupmenu1.</span>
+
+<span class="comment">% hObject    handle to popupmenu1 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+
+<span class="comment">% --- Executes on key press with focus on popupmenu1 and none of its controls.</span>
+<span class="comment">% hObject    handle to popupmenu1 (see GCBO)</span>
+<span class="comment">% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)</span>
+<span class="comment">%	Key: name of the key that was pressed, in lower case</span>
+<span class="comment">%	Character: character interpretation of the key(s) that was pressed</span>
+<span class="comment">%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+
+<span class="comment">% --- Executes on slider movement.</span>
+<span class="keyword">function</span> slider3_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider3 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="comment">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> slider3_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to slider3 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: slider controls usually have a light gray background.</span>
+<span class="keyword">if</span> isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,[.9 .9 .9]);
+<span class="keyword">end</span>
+
+
+<span class="comment">% --- Executes on button press in pushbutton4.</span>
+<span class="keyword">function</span> pushbutton4_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to pushbutton4 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="keyword">if</span> get(handles.edit2,<span class="string">'String'</span>) == <span class="string">'0'</span>
+    set(handles.edit2,<span class="string">'String'</span>,<span class="string">'1'</span>);
+    set(handles.pushbutton4,<span class="string">'String'</span>,<span class="string">'CONTINUAR'</span>);
+<span class="keyword">else</span>
+    set(handles.edit2,<span class="string">'String'</span>,<span class="string">'0'</span>);
+    set(handles.pushbutton4,<span class="string">'String'</span>,<span class="string">'CONTINUAR'</span>);
+<span class="keyword">end</span>
+
+
+
+<span class="keyword">function</span> edit2_Callback(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to edit2 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="comment">% Hints: get(hObject,'String') returns contents of edit2 as</span>
+
+<span class="comment">%        str2double(get(hObject,'String')) returns contents of edit2 as a double</span>
+
+
+<span class="comment">% --- Executes during object creation, after setting all properties.</span>
+<span class="keyword">function</span> edit2_CreateFcn(hObject, eventdata, handles)
+<span class="comment">% hObject    handle to edit2 (see GCBO)</span>
+<span class="comment">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="comment">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="comment">% Hint: edit controls usually have a white background on Windows.</span>
+<span class="comment">%       See ISPC and COMPUTER.</span>
+<span class="keyword">if</span> ispc &amp;&amp; isequal(get(hObject,<span class="string">'BackgroundColor'</span>), get(0,<span class="string">'defaultUicontrolBackgroundColor'</span>))
+    set(hObject,<span class="string">'BackgroundColor'</span>,<span class="string">'white'</span>);
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">
+f =
+
+  Columns 1 through 7
+
+  420.0000  420.1000  420.2000  420.3000  420.4000  420.5000  420.6000
+
+  Columns 8 through 14
+
+  420.7000  420.8000  420.9000  421.0000  421.1000  421.2000  421.3000
+
+  Columns 15 through 21
+
+  421.4000  421.5000  421.6000  421.7000  421.8000  421.9000  422.0000
+
+  Columns 22 through 28
+
+  422.1000  422.2000  422.3000  422.4000  422.5000  422.6000  422.7000
+
+  Columns 29 through 35
+
+  422.8000  422.9000  423.0000  423.1000  423.2000  423.3000  423.4000
+
+  Columns 36 through 42
+
+  423.5000  423.6000  423.7000  423.8000  423.9000  424.0000  424.1000
+
+  Columns 43 through 49
+
+  424.2000  424.3000  424.4000  424.5000  424.6000  424.7000  424.8000
+
+  Columns 50 through 56
+
+  424.9000  425.0000  425.1000  425.2000  425.3000  425.4000  425.5000
+
+  Columns 57 through 63
+
+  425.6000  425.7000  425.8000  425.9000  426.0000  426.1000  426.2000
+
+  Columns 64 through 70
+
+  426.3000  426.4000  426.5000  426.6000  426.7000  426.8000  426.9000
+
+  Columns 71 through 77
+
+  427.0000  427.1000  427.2000  427.3000  427.4000  427.5000  427.6000
+
+  Columns 78 through 84
+
+  427.7000  427.8000  427.9000  428.0000  428.1000  428.2000  428.3000
+
+  Columns 85 through 91
+
+  428.4000  428.5000  428.6000  428.7000  428.8000  428.9000  429.0000
+
+  Columns 92 through 98
+
+  429.1000  429.2000  429.3000  429.4000  429.5000  429.6000  429.7000
+
+  Columns 99 through 105
+
+  429.8000  429.9000  430.0000  430.1000  430.2000  430.3000  430.4000
+
+  Columns 106 through 112
+
+  430.5000  430.6000  430.7000  430.8000  430.9000  431.0000  431.1000
+
+  Columns 113 through 119
+
+  431.2000  431.3000  431.4000  431.5000  431.6000  431.7000  431.8000
+
+  Columns 120 through 126
+
+  431.9000  432.0000  432.1000  432.2000  432.3000  432.4000  432.5000
+
+  Columns 127 through 133
+
+  432.6000  432.7000  432.8000  432.9000  433.0000  433.1000  433.2000
+
+  Columns 134 through 140
+
+  433.3000  433.4000  433.5000  433.6000  433.7000  433.8000  433.9000
+
+  Columns 141 through 147
+
+  434.0000  434.1000  434.2000  434.3000  434.4000  434.5000  434.6000
+
+  Columns 148 through 154
+
+  434.7000  434.8000  434.9000  435.0000  435.1000  435.2000  435.3000
+
+  Columns 155 through 161
+
+  435.4000  435.5000  435.6000  435.7000  435.8000  435.9000  436.0000
+
+  Columns 162 through 168
+
+  436.1000  436.2000  436.3000  436.4000  436.5000  436.6000  436.7000
+
+  Columns 169 through 175
+
+  436.8000  436.9000  437.0000  437.1000  437.2000  437.3000  437.4000
+
+  Columns 176 through 182
+
+  437.5000  437.6000  437.7000  437.8000  437.9000  438.0000  438.1000
+
+  Columns 183 through 189
+
+  438.2000  438.3000  438.4000  438.5000  438.6000  438.7000  438.8000
+
+  Columns 190 through 196
+
+  438.9000  439.0000  439.1000  439.2000  439.3000  439.4000  439.5000
+
+  Columns 197 through 203
+
+  439.6000  439.7000  439.8000  439.9000  440.0000  440.1000  440.2000
+
+  Columns 204 through 210
+
+  440.3000  440.4000  440.5000  440.6000  440.7000  440.8000  440.9000
+
+  Columns 211 through 217
+
+  441.0000  441.1000  441.2000  441.3000  441.4000  441.5000  441.6000
+
+  Columns 218 through 224
+
+  441.7000  441.8000  441.9000  442.0000  442.1000  442.2000  442.3000
+
+  Columns 225 through 231
+
+  442.4000  442.5000  442.6000  442.7000  442.8000  442.9000  443.0000
+
+  Columns 232 through 238
+
+  443.1000  443.2000  443.3000  443.4000  443.5000  443.6000  443.7000
+
+  Columns 239 through 245
+
+  443.8000  443.9000  444.0000  444.1000  444.2000  444.3000  444.4000
+
+  Columns 246 through 252
+
+  444.5000  444.6000  444.7000  444.8000  444.9000  445.0000  445.1000
+
+  Columns 253 through 259
+
+  445.2000  445.3000  445.4000  445.5000  445.6000  445.7000  445.8000
+
+  Columns 260 through 266
+
+  445.9000  446.0000  446.1000  446.2000  446.3000  446.4000  446.5000
+
+  Columns 267 through 273
+
+  446.6000  446.7000  446.8000  446.9000  447.0000  447.1000  447.2000
+
+  Columns 274 through 280
+
+  447.3000  447.4000  447.5000  447.6000  447.7000  447.8000  447.9000
+
+  Columns 281 through 287
+
+  448.0000  448.1000  448.2000  448.3000  448.4000  448.5000  448.6000
+
+  Columns 288 through 294
+
+  448.7000  448.8000  448.9000  449.0000  449.1000  449.2000  449.3000
+
+  Columns 295 through 301
+
+  449.4000  449.5000  449.6000  449.7000  449.8000  449.9000  450.0000
+
+  Columns 302 through 308
+
+  450.1000  450.2000  450.3000  450.4000  450.5000  450.6000  450.7000
+
+  Columns 309 through 315
+
+  450.8000  450.9000  451.0000  451.1000  451.2000  451.3000  451.4000
+
+  Columns 316 through 322
+
+  451.5000  451.6000  451.7000  451.8000  451.9000  452.0000  452.1000
+
+  Columns 323 through 329
+
+  452.2000  452.3000  452.4000  452.5000  452.6000  452.7000  452.8000
+
+  Columns 330 through 336
+
+  452.9000  453.0000  453.1000  453.2000  453.3000  453.4000  453.5000
+
+  Columns 337 through 343
+
+  453.6000  453.7000  453.8000  453.9000  454.0000  454.1000  454.2000
+
+  Columns 344 through 350
+
+  454.3000  454.4000  454.5000  454.6000  454.7000  454.8000  454.9000
+
+  Columns 351 through 357
+
+  455.0000  455.1000  455.2000  455.3000  455.4000  455.5000  455.6000
+
+  Columns 358 through 364
+
+  455.7000  455.8000  455.9000  456.0000  456.1000  456.2000  456.3000
+
+  Columns 365 through 371
+
+  456.4000  456.5000  456.6000  456.7000  456.8000  456.9000  457.0000
+
+  Columns 372 through 378
+
+  457.1000  457.2000  457.3000  457.4000  457.5000  457.6000  457.7000
+
+  Columns 379 through 385
+
+  457.8000  457.9000  458.0000  458.1000  458.2000  458.3000  458.4000
+
+  Columns 386 through 392
+
+  458.5000  458.6000  458.7000  458.8000  458.9000  459.0000  459.1000
+
+  Columns 393 through 399
+
+  459.2000  459.3000  459.4000  459.5000  459.6000  459.7000  459.8000
+
+  Columns 400 through 401
+
+  459.9000  460.0000
+
+
+y =
+
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+     0
+
+</pre><img vspace="5" hspace="5" src="Main_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+   
+function varargout = Main(varargin)
+% MAIN MATLAB code for Main.fig
+%      MAIN, by itself, creates a new MAIN or raises the existing
+%      singleton*.
+%
+%      H = MAIN returns the handle to a new MAIN or the handle to
+%      the existing singleton*.
+%
+%      MAIN('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in MAIN.M with the given input arguments.
+%
+%      MAIN('Property','Value',...) creates a new MAIN or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before Main_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to Main_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help Main
+
+% Last Modified by GUIDE v2.5 17-Jun-2018 16:09:33
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @Main_OpeningFcn, ...
+                   'gui_OutputFcn',  @Main_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+% REPLACE_WITH_DASH_DASH- Executes just before Main is made visible.
+function Main_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to Main (see VARARGIN)
+
+% Choose default command line output for Main
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% This sets up the initial plot - only do when we are invisible
+% so window can get raised using Main.
+if strcmp(get(hObject,'Visible'),'off')
+    %plot(1);
+end
+%Default load program
+global s
+global pauseStatus
+g= imread('main.jpg');
+axes(handles.axes2)
+imshow(g);
+pauseStatus = 0;
+set(handles.slider1,'Enable','off')
+set(handles.slider2,'Enable','off')
+f = 420:0.1:460
+y = zeros(401,1)
+plot(f,y,'r','parent',handles.axes1);
+set(handles.axes1,'color','g')
+grid(handles.axes1,'minor')
+
+%set(findobj(gcf, 'type','axes1'), 'Visible','off');
+% Miguel.califa REPLACE_WITH_DASH_DASH> Se automatiza el inicio de los puertos com
+%Aqui se declara la funcion que se va a ejecutar cada segundo
+% UIWAIT makes Main wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+    
+
+% REPLACE_WITH_DASH_DASH- Outputs from this function are returned to the command line.
+function varargout = Main_OutputFcn(hObject, eventdata, handles)
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+% REPLACE_WITH_DASH_DASH- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+clc;
+delete(instrfindall);
+    popup_sel_index = get(handles.popupmenu1, 'Value');
+    switch popup_sel_index
+    case 1
+        s = serial('COM1','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 2
+        s = serial('COM2','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 3
+        s = serial('COM3','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 4
+        s = serial('COM4','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 5
+        s = serial('COM5','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 6
+        s = serial('COM6','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 7
+        s = serial('COM7','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            delete(instrfindall);
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            fopen(s);
+        end
+    case 8
+        s = serial('COM8','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 9
+        s = serial('COM9','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 10
+        s = serial('COM10','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 11
+        s = serial('COM11','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 12
+        s = serial('COM12','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 13
+        s = serial('COM13','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 14
+        s = serial('COM14','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+    case 15
+        s = serial('COM15','BAUD',115200);
+        s.InputBufferSize = 2048;
+        try
+            fopen(s);
+        catch
+            msgbox('No se puede iniciar el puerto serie');
+            fclose(s);
+            delete(instrfindall);
+            fopen(s);
+        end
+
+    end
+set(findobj(gcf, 'type','axes1'), 'Visible','true')
+s.BytesAvailableFcn = {@showDataSerial,hObject}
+
+function showDataSerial(s, eventdata, hFigure)
+handles = guidata(hFigure);
+if(get(handles.edit2,'String') == '0')
+    fgetl(s)
+    data1 = fgetl(s)
+    splittedPoints1 = strsplit(data1,',')
+    numbers1 = str2double(splittedPoints1)
+    [m,n] = size(splittedPoints1)
+    mychar = splittedPoints1(n)
+    StrEnd = mychar{1}
+    FrecuenciaInferior = numbers1(2)
+    FrecuenciaSuperior = numbers1(3)
+    Paso = numbers1(4)
+    if strfind(StrEnd,'END')
+        h=handles.axes1;
+        numbers3 = [numbers1(5:n)];
+        f = FrecuenciaInferior:Paso:FrecuenciaSuperior
+        [o,p] = size(numbers3)
+        [q,r] = size(f);
+        limit = get(handles.slider3,'Value');
+        mensaje = strcat('UMBRAL DE MEDICION (',num2str(limit),')');
+        set(handles.text11,'String',mensaje);
+        if p==r
+            for i=1:p
+                numbers3(i);
+                if numbers3(i)<=limit
+                    numbers3(i) = 0; %En caso de no cumplir se atenua (Se asume es ruido)
+                end                
+            end
+            stem(f,numbers3,'r','parent',h);
+        else
+            numbers3 = [numbers1(6:n)];
+            for i=1:p-1
+                if numbers3(i)<=limit
+                    numbers3(i) = 0; %En caso de no cumplir se atenua (Se asume es ruido)
+                end                
+            end
+            stem(h,numbers3,'r','parent',h);
+        end
+        Fc = (FrecuenciaInferior+((FrecuenciaSuperior-FrecuenciaInferior)/2));
+        title('Signal Analysis','parent',h);
+        ylabel('Power received RSSi (dBm)','parent',h);
+        xlabel('Frecuency (MHz)','parent',h);
+        grid(h,'minor');
+        set(h,'color','g')
+        ax = h
+        ax.GridLineStyle = '-'
+        ax.LineWidth = 1
+        ax.GridColor = 'white'
+        ax.GridAlpha = 0 %(or 1 i have forgotten how alpha works).
+        pause(0.1);
+        
+        try
+        set(handles.slider1,'Enable','on');
+        set(handles.slider2,'Enable','on');
+        set(handles.slider2,'Value',FrecuenciaInferior);
+        set(handles.slider1,'Value',FrecuenciaSuperior);
+        set(handles.slider1,'Enable','on');
+        set(handles.slider2,'Enable','on');
+        set(handles.pushbutton1,'String','RECONECTAR');
+        end
+        FrecuenciaSuperior = numbers1(2);
+        FrecuenciaInferior = numbers1(3);
+        set(handles.slider2,'Value',FrecuenciaInferior);
+        set(handles.slider1,'Value',FrecuenciaSuperior);
+        Mensaje = strcat('F: ' ,num2str(FrecuenciaSuperior),'-',num2str(FrecuenciaInferior),' (MHz)');
+        Mensaje2 =strcat('Fc: ' ,num2str(Fc),' (MHz)');
+        set(handles.text3,'String',Mensaje);
+        set(handles.text7,'String',Mensaje2);
+    end
+    rango = FrecuenciaSuperior-FrecuenciaInferior
+    set(handles.axes2,'XTick',f)
+    h =findall('type','axes');
+    set(h(1), 'XTick',ticks);
+end
+  
+    
+
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+function FileMenu_Callback(hObject, eventdata, handles)
+% hObject    handle to FileMenu (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+function OpenMenuItem_Callback(hObject, eventdata, handles)
+% hObject    handle to OpenMenuItem (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+file = uigetfile('*.fig');
+if ~isequal(file, 0)
+    open(file);
+end
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+function PrintMenuItem_Callback(hObject, eventdata, handles)
+% hObject    handle to PrintMenuItem (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+printdlg(handles.figure1)
+
+% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+function CloseMenuItem_Callback(hObject, eventdata, handles)
+% hObject    handle to CloseMenuItem (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+selection = questdlg(['Close ' get(handles.figure1,'Name') '?'],...
+                     ['Close ' get(handles.figure1,'Name') '...'],...
+                     'Yes','No','Yes');
+if strcmp(selection,'No')
+    return;
+end
+
+delete(handles.figure1)
+
+
+% REPLACE_WITH_DASH_DASH- Executes on selection change in popupmenu1.
+function popupmenu1_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = get(hObject,'String') returns popupmenu1 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu1
+
+
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function popupmenu1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+     set(hObject,'BackgroundColor','white');
+end
+set(hObject, 'String', {'COM1', 'COM2', 'COM3', 'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'COM10', 'COM11', 'COM12', 'COM13', 'COM14', 'COM15'});
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider1_Callback(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider2_Callback(hObject, eventdata, handles)
+% hObject    handle to slider2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+%Esta es la funcion que se va a ejecutar cada segundo
+
+
+% REPLACE_WITH_DASH_DASH- If Enable == 'on', executes on mouse press in 5 pixel border.
+% REPLACE_WITH_DASH_DASH- Otherwise, executes on mouse press in 5 pixel border or over popupmenu1.
+
+% hObject    handle to popupmenu1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% REPLACE_WITH_DASH_DASH- Executes on key press with focus on popupmenu1 and none of its controls.
+% hObject    handle to popupmenu1 (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% REPLACE_WITH_DASH_DASH- Executes on slider movement.
+function slider3_Callback(hObject, eventdata, handles)
+% hObject    handle to slider3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function slider3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to slider3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% REPLACE_WITH_DASH_DASH- Executes on button press in pushbutton4.
+function pushbutton4_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+if get(handles.edit2,'String') == '0'
+    set(handles.edit2,'String','1');
+    set(handles.pushbutton4,'String','CONTINUAR');
+else
+    set(handles.edit2,'String','0');
+    set(handles.pushbutton4,'String','CONTINUAR');
+end
+
+
+
+function edit2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit2 as 
+
+%        str2double(get(hObject,'String')) returns contents of edit2 as a double
+
+
+% REPLACE_WITH_DASH_DASH- Executes during object creation, after setting all properties.
+function edit2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+##### SOURCE END #####
+--></body></html>
