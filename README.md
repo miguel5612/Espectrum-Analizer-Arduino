@@ -1,7 +1,6 @@
 # Analizador de espectro de bajo costo
 
-El presente repositorio contiene las instrucciones para elaborar un analizador de 
-espectro (240-930 MHz) casero empleando las tarjetas arduino y el modulo Si - 4432 y para analizar los
+El presente repositorio contiene las instrucciones para elaborar un analizador de espectro (240-930 MHz), para el prototipo se ha limitado en el arduino ide  a un espectro de (420 - 460 MHz) casero empleando las tarjetas arduino y el modulo Si - 4432 y para analizar los
 datos obtenidos se va a emplear un guide hecho en MATLAB r2013a.
 
 # Diagrama esquematico (wiring diagram)
