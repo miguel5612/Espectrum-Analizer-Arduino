@@ -1,4 +1,4 @@
-# Espectrum-Analizer-Arduino
+# Analizador de espectro de bajo costo
 
 El presente repositorio contiene las instrucciones para elaborar un analizador de 
 espectro (240-930 MHz) casero empleando las tarjetas arduino y el modulo Si - 4432 y para analizar los
@@ -14,9 +14,9 @@ datos obtenidos se va a emplear un guide hecho en MATLAB r2013a.
 1.	Interfaz USB
 Modulo USB mediante el cual se conecta el analizador de espectro al computador.
 2.	Frecuencia Superior
-Botones mediante los cuales se puede ajustar el límite superior de la frecuencia
+Botones mediante los cuales se puede ajustar el lÃ­mite superior de la frecuencia
 3.	Frecuencia Inferior
-Botones mediante los cuales se puede ajustar el límite inferior de la frecuencia
+Botones mediante los cuales se puede ajustar el lÃ­mite inferior de la frecuencia
 4.	Pantalla LCD
 Pantalla en la que se observa el rango de frecuencia del analizador
 
